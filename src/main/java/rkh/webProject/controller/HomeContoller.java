@@ -14,4 +14,9 @@ public class HomeContoller {
     public String colorvely() {
         return "colorvely";
     }
+
+    @GetMapping("/happyrancity")
+    public String happyrancity() {
+        return "happyrancity";
+    }
 }
