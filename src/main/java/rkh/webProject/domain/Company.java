@@ -1,4 +1,4 @@
-package rkh.webProject.model;
+package rkh.webProject.domain;
 
 
 public class Company {

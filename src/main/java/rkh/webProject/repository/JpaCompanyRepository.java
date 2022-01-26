@@ -1,6 +1,6 @@
 package rkh.webProject.repository;
 
-import rkh.webProject.model.Company;
+import rkh.webProject.domain.Company;
 
 import java.util.List;
 import java.util.Optional;

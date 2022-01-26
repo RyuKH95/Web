@@ -1,7 +1,7 @@
 package rkh.webProject.service;
 
 
-import rkh.webProject.model.Company;
+import rkh.webProject.domain.Company;
 import rkh.webProject.repository.CompanyRepository;
 
 import java.util.List;
