@@ -10,7 +10,10 @@ import java.util.Optional;
 
 public class MemoryCompanyRepository implements CompanyRepository{
 
-    private static Map<Long, Company> store = new HashMap<>(); //실무에서는 HashMap 을 static으로 사용하면 중복의 위험이 있어 지양
+    /**
+     * 동시성 문제가 고려되어 있지 않음, 실무에서는 ConcurrentHashMap, AtomicLong 사용 고려
+     */
+    private static Map<Long, Company> store = new HashMap<>();
     private static long sequence = 0L;
 
     @Override
@@ -33,5 +36,9 @@ public class MemoryCompanyRepository implements CompanyRepository{
     @Override
     public List<Company> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }

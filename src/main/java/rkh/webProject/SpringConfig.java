@@ -27,7 +27,7 @@ public class SpringConfig {
     @Bean
     public CompanyService companyService() {
 //        return new CompanyService(companyService());
-        return new CompanyService(companyRepository);
+        return new CompanyService();
     }
 
 //    @Bean
