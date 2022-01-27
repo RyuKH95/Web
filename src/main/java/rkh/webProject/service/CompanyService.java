@@ -3,22 +3,18 @@ package rkh.webProject.service;
 
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import rkh.webProject.domain.Company;
 import rkh.webProject.repository.CompanyRepository;
 
-@Service
+//@Service //Component 스캔 방식 때 사용
 public class CompanyService {
 
-    private final CompanyRepository memberRepository;
+    private final CompanyRepository companyRepository;
 
-    @Autowired
+    //@Autowired //Component 스캔 방식 때 사용
     public CompanyService(CompanyRepository companyRepository) {
-        this.memberRepository = companyRepository;
+        this.companyRepository = companyRepository;
     }
-
-//    private final CompanyRepository memberRepository = new MemoryCompanyRepository();
 
     /**
      * 회원가입
@@ -28,12 +24,12 @@ public class CompanyService {
      */
     public Long join(Company company) {
         validateDuplicateCompany(company); //중복회원 검증
-        memberRepository.save(company);
+        companyRepository.save(company);
         return company.getId();
     }
 
     private void validateDuplicateCompany(Company company) {
-        memberRepository.findByName(company.getName())
+        companyRepository.findByName(company.getName())
                 .ifPresent(c -> {
                     throw new IllegalStateException("이미 존재하는 회사입니다.");
                 });
@@ -45,10 +41,10 @@ public class CompanyService {
      * @return
      */
     public List<Company> findMembers() {
-        return memberRepository.findAll();
+        return companyRepository.findAll();
     }
 
     public Optional<Company> findOne(Long companyId) {
-        return memberRepository.findById(companyId);
+        return companyRepository.findById(companyId);
     }
 }

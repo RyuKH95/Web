@@ -1,15 +1,13 @@
 package rkh.webProject.repository;
 
 import java.util.ArrayList;
-import org.springframework.stereotype.Repository;
-import rkh.webProject.domain.Company;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import rkh.webProject.domain.Company;
 
-@Repository
+//@Repository //Component 스캔 방식 때 사용
 public class MemoryCompanyRepository implements CompanyRepository{
 
     /**

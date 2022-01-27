@@ -1,41 +1,21 @@
 package rkh.webProject;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import rkh.webProject.repository.CompanyRepository;
+import rkh.webProject.repository.MemoryCompanyRepository;
 import rkh.webProject.service.CompanyService;
 
-//@Configuration
+@Configuration //Java 코드로 스프링 빈 등록하기
 public class SpringConfig {
 
-    //region JPAEntityManager
-//    private EntityManager em;
-//
-//    @Autowired
-//    public SpringConfig(EntityManager em) {
-//        this.em = em;
-//    }
-    //endregion
-
-    private final CompanyRepository companyRepository;
-
-    @Autowired
-    public SpringConfig(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
-
-    @Bean
+    @Bean //Java 코드로 스프링 빈 등록하기
     public CompanyService companyService() {
-//        return new CompanyService(companyService());
-        return new CompanyService();
+        return new CompanyService(companyRepository());
     }
 
-//    @Bean
-//    public CompanyService companyService() {
-////        return new MemoryCompanyRepository();
-////        return new JdbcMemberRepository(dataSource);
-////        return new JdbcTemplateMemberRepository(dataSource);
-////        return new JpaCompanyRepository(em);
-//    }
-
+    @Bean //Java 코드로 스프링 빈 등록하기
+    public CompanyRepository companyRepository() {
+        return new MemoryCompanyRepository();
+    }
 }
