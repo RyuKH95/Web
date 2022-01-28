@@ -1,7 +1,9 @@
 package rkh.webProject.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import rkh.webProject.domain.Company;
@@ -16,16 +18,23 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
-    @GetMapping("/company/new")
+    @GetMapping("/companys/new")
     public String createForm() {
-        return "company/createCompanyForm";
+        return "companys/createCompanyForm";
     }
-    @PostMapping("/company/new")
+    @PostMapping("/companys/new")
     public String companyCreate(CompanyForm form) {
         Company company = new Company();
         company.setName(form.getName());
 
         companyService.join(company);
         return "redirect:/spring";
+    }
+
+    @GetMapping("/companys")
+    public String list(Model model) {
+        List<Company> companys = companyService.findMembers();
+        model.addAttribute("companys", companys);
+        return "companys/companyList";
     }
 }
