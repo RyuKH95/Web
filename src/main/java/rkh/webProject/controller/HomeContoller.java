@@ -19,6 +19,11 @@ public class HomeContoller {
         return "colorvely";
     }
 
+    @GetMapping("/spring")
+    public String spring() {
+        return "spring";
+    }
+
     @GetMapping("/happyrancity")
     public String happyrancity() {
         return "happyrancity";
