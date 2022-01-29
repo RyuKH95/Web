@@ -27,10 +27,10 @@ class CompanyServiceIntegrationTest {
         company.setSite("a@a.a");
         company.setAddress("대전 대덕구 송촌남로18");
         //when
-        Long saveId = companyService.join(company);
+        String saveId = companyService.join(company);
 
         //then
-        Company findCompany = companyService.findOne(saveId).get();
+        Company findCompany = companyService.findOne(Long.parseLong(saveId)).get();
         assertThat(company.getName()).isEqualTo(findCompany.getName());
     }
 

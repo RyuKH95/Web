@@ -32,10 +32,10 @@ class CompanyServiceTest {
         company.setName("spring");
 
         //when
-        Long saveId = companyService.join(company);
+        String saveId = companyService.join(company);
 
         //then
-        Company findCompany = companyService.findOne(saveId).get();
+        Company findCompany = companyService.findOne(Long.parseLong(saveId)).get();
         assertThat(company.getName()).isEqualTo(findCompany.getName());
     }
 

@@ -22,10 +22,17 @@ public class CompanyService {
      * @param company
      * @return getId
      */
-    public Long join(Company company) {
-        validateDuplicateCompany(company); //중복회원 검증
-        companyRepository.save(company);
-        return company.getId();
+    public String join(Company company) {
+        try {
+            validateDuplicateCompany(company); //중복회원 검증
+            companyRepository.save(company);
+
+            return company.getId().toString();
+        }
+        catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+            return e.getMessage();
+        }
     }
 
     private void validateDuplicateCompany(Company company) {

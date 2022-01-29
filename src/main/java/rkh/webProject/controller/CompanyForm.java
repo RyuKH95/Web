@@ -1,7 +1,8 @@
 package rkh.webProject.controller;
 
 public class CompanyForm {
-    public String name;
+    private String name;
+    private String site;
 
     public String getName() {
         return name;
@@ -9,5 +10,13 @@ public class CompanyForm {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
     }
 }
