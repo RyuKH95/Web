@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import rkh.webProject.domain.Company;
 import rkh.webProject.service.CompanyService;
 
@@ -30,16 +29,8 @@ public class CompanyController {
         Company company = new Company();
         company.setName(form.getName());
         company.setSite(form.getSite());
-        String join = companyService.join(company);
-        if (join.equals("이미 존재하는 회사입니다.")) {
-            return "<script>alert('이미 존재하는 회사입니다.'>; history.go(-1);</script>";//alertError();
-        }
+        companyService.join(company);
         return "redirect:/spring";
-    }
-
-    @ResponseBody
-    public String alertError() {
-        return "<script>alert('이미 존재하는 회사입니다.'>; history.go(-1);</script>";
     }
 
     @GetMapping("/companys")
