@@ -3,10 +3,12 @@ package rkh.webProject.service;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 import rkh.webProject.domain.Company;
 import rkh.webProject.repository.CompanyRepository;
 
 //@Service //Component 스캔 방식 때 사용
+@Transactional //JPA 방식 때 사용
 public class CompanyService {
 
     private final CompanyRepository companyRepository;

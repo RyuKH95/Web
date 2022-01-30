@@ -4,6 +4,7 @@ public class CompanyForm {
     private String name;
     private String site;
 
+
     public String getName() {
         return name;
     }

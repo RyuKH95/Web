@@ -3,6 +3,7 @@ package rkh.webProject.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +27,7 @@ class CompanyServiceIntegrationTest {
         company.setName("spring");
         company.setSite("a@a.a");
         company.setAddress("대전 대덕구 송촌남로18");
+        company.setChange_ymd(LocalDate.now().toString());
         //when
         Long saveId = companyService.join(company);
 
@@ -41,11 +43,13 @@ class CompanyServiceIntegrationTest {
         company1.setName("spring");
         company1.setSite("a@a.a");
         company1.setAddress("대전 대덕구 송촌남로18");
+        company1.setChange_ymd(LocalDate.now().toString());
 
         Company company2 = new Company();
         company2.setName("spring");
         company2.setSite("a@a.a");
         company2.setAddress("대전 대덕구 송촌남로18");
+        company2.setChange_ymd(LocalDate.now().toString());
         //when
         companyService.join(company1);
         /*
