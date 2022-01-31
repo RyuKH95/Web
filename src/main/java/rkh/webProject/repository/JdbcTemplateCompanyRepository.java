@@ -30,6 +30,7 @@ public class JdbcTemplateCompanyRepository implements CompanyRepository{
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", company.getName());
         parameters.put("site", company.getSite());
+        parameters.put("addr", company.getAddress());
         parameters.put("CRE_YMD", LocalDate.now());
         parameters.put("CHG_YMD", LocalDate.now());
         Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));

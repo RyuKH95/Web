@@ -1,5 +1,6 @@
 package rkh.webProject.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class CompanyController {
         Company company = new Company();
         company.setName(form.getName());
         company.setSite(form.getSite());
+        company.setAddress(form.getAddr());
+        company.setChange_ymd(LocalDateTime.now().toString());
         companyService.join(company);
         return "redirect:/spring";
     }
