@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import rkh.webProject.repository.CompanyRepository;
 import rkh.webProject.repository.JpaMemberRepository;
+import rkh.webProject.repository.JpaRancityRepository;
+import rkh.webProject.repository.RancityRepository;
 import rkh.webProject.service.CompanyService;
 
 @Configuration //Java 코드로 스프링 빈 등록하기
@@ -14,14 +16,12 @@ public class SpringConfig {
     /**
      * Jdbc 방식 때 사용
      */
-    /*
-    private DataSource dataSource;
-
-    @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-    */
+//    private DataSource dataSource;
+//
+//    @Autowired
+//    public SpringConfig(DataSource dataSource) {
+//        this.dataSource = dataSource;
+//    }
     //endregion
 
     //region Jpa 방식 때 사용
@@ -47,5 +47,12 @@ public class SpringConfig {
 //        return new MemoryCompanyRepository();
 //        return new JdbcTemplateCompanyRepository(dataSource);
         return new JpaMemberRepository(em);
+    }
+
+    @Bean
+    public RancityRepository rancityRepository() {
+//        return new MemoryRancityLoginRepository();
+//        return new JdbcTemplateRancityLoginRepository(dataSource);
+        return new JpaRancityRepository(em);
     }
 }

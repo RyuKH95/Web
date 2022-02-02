@@ -12,8 +12,6 @@
         gtag('js', new Date());
 
         gtag('config', 'G-YS9YKWL86E');
-
-
   </script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>rgh.synology.me</title>
@@ -22,7 +20,7 @@
 <h1>Hello Spring Project!</h1>
 <ul th:each="company : ${companys}">
   <li>
-    <a th:href="@{'/' + ${company.site}}" th:text="${company.name}"></a>
+    <a th:href="@{${company.site}}" th:text="${company.name}"></a>
   </li>
 </ul>
 <!--<div>-->

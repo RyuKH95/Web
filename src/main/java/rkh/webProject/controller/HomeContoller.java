@@ -20,38 +20,41 @@ public class HomeContoller {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("data", "colorvely");
         List<Company> companys = companyService.findMembers();
         model.addAttribute("companys", companys);
         return "home";
     }
 
-    @GetMapping("/colorvely")
+    @GetMapping("colorvely")
     public String colorvely() {
-        return "colorvely";
+        return "colorvely/colorvely";
     }
 
-    @GetMapping("/spring")
+    @GetMapping("spring")
     public String spring() {
         return "spring";
     }
 
-    @GetMapping("/happyrancity")
-    public String happyrancity() {
-        return "happyrancity";
-    }
-
-    @GetMapping("/apitest")
+    @GetMapping("apitest")
     @ResponseBody
-    public Hello apiTest(@RequestParam("name") String name) {
+    public Hello apiTest(@RequestParam("name") String name, @RequestParam("id") String id) {
         Hello hello = new Hello();
         hello.setName(name);
-
+        hello.setId(id);
         return hello;
     }
 
     static class Hello {
+        private String id;
         private String name;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
 
         public String getName() {
             return name;
