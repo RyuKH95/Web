@@ -36,14 +36,14 @@ public class RLoginController {
         System.out.println("회원가입");
         RUser rUser = new RUser();
         rUser.setId(form.getId());
-        rUser.setPw(form.getPw());
+        rUser.setPassword(form.getPassword());
         rUser.setPhone(form.getPhone());
         rUser.setEmail(form.getEmail());
-        rUser.setCreate_ymd(LocalDateTime.now().toString());
-        rUser.setDelete_ymd("99991231");
+        rUser.setCreate_ymd(LocalDateTime.now());
+        rUser.setDelete_ymd(null);
         rUser.setUse_yn(form.getUse_yn());
         rancityService.join(rUser);
-        System.out.println("회원가입 데이터 "+rUser.getNum()+" "+rUser.getId()+" "+rUser.getPw()+" "+rUser.getPhone()+" "+rUser.getEmail()+" "+rUser.getCreate_ymd()+" "+rUser.getDelete_ymd()+" "+rUser.getUse_yn());
+        System.out.println("회원가입 데이터 "+rUser.getNum()+" "+rUser.getId()+" "+rUser.getPassword()+" "+rUser.getPhone()+" "+rUser.getEmail()+" "+rUser.getCreate_ymd()+" "+rUser.getDelete_ymd()+" "+rUser.getUse_yn());
         return "redirect:/happyRancity";
     }
 }

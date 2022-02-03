@@ -20,15 +20,15 @@ public class RancityService {
      * @param rUser
      * @return
      */
-    public Long join(RUser rUser) {
+    public String join(RUser rUser) {
         validateDuplicateCompany(rUser); //중복회원 검증
         rancityRepository.signIn(rUser);
 
-        return rUser.getNum();
+        return rUser.getId();
     }
 
     private void validateDuplicateCompany(RUser rUser) {
-        rancityRepository.findByIdPw(rUser.getId(), rUser.getPw())
+        rancityRepository.findByIdPw(rUser.getId(), rUser.getPassword())
                 .ifPresent(c -> {
                     throw new IllegalStateException("이미 존재하는 ID입니다.");
                 });

@@ -16,13 +16,15 @@ public class JpaRancityRepository implements RancityRepository{
     @Override
     public RUser signIn(RUser rUser) {
         em.persist(rUser);
+//        em.createQuery(
+//                "insert into rUser r (`id`, `password`, `phone`, `email`, `cre_ymd`, `del_ymd`, `use_yn`) values (1, 1, 1, 1, 20220202, 99991231, 1)");
         return rUser;
     }
 
     @Override
-    public Optional<RUser> findByIdPw(String id, String pw) {
-        List<RUser> result = em.createQuery("select r from RancityUser r where r.id=:id and r.pw=:pw",
-                RUser.class).setParameter("id", id).setParameter("pw", pw).getResultList();
+    public Optional<RUser> findByIdPw(String id, String password) {
+        List<RUser> result = em.createQuery("select r from rUser r where r.id=:id and r.password=:password", RUser.class).setParameter("id", id).setParameter("password", password).getResultList();
         return result.stream().findAny();
+//        return Optional.empty();
     }
 }

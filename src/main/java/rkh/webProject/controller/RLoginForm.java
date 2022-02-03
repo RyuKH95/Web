@@ -2,7 +2,7 @@ package rkh.webProject.controller;
 
 public class RLoginForm {
     private String id;
-    private String pw;
+    private String password;
     private String phone;
     private String email;
     private String use_yn;
@@ -15,12 +15,12 @@ public class RLoginForm {
         this.id = id;
     }
 
-    public String getPw() {
-        return pw;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPw(String pw) {
-        this.pw = pw;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhone() {

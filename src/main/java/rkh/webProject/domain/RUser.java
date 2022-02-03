@@ -1,5 +1,6 @@
 package rkh.webProject.domain;
 
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,15 +15,15 @@ public class RUser {
     @Column(name = "id")
     private String id;
     @Column(name = "password")
-    private String pw;
+    private String password;
     @Column(name = "phone")
     private String phone;
     @Column(name = "email")
     private String email;
     @Column(name = "cre_ymd")
-    private String create_ymd;
+    private LocalDateTime create_ymd;
     @Column(name = "del_ymd")
-    private String delete_ymd;
+    private LocalDateTime delete_ymd;
     @Column(name = "use_yn")
     private String use_yn;
 
@@ -42,12 +43,12 @@ public class RUser {
         this.id = id;
     }
 
-    public String getPw() {
-        return pw;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPw(String pw) {
-        this.pw = pw;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getPhone() {
@@ -66,19 +67,19 @@ public class RUser {
         this.email = email;
     }
 
-    public String getCreate_ymd() {
+    public LocalDateTime getCreate_ymd() {
         return create_ymd;
     }
 
-    public void setCreate_ymd(String create_ymd) {
+    public void setCreate_ymd(LocalDateTime create_ymd) {
         this.create_ymd = create_ymd;
     }
 
-    public String getDelete_ymd() {
+    public LocalDateTime getDelete_ymd() {
         return delete_ymd;
     }
 
-    public void setDelete_ymd(String delete_ymd) {
+    public void setDelete_ymd(LocalDateTime delete_ymd) {
         this.delete_ymd = delete_ymd;
     }
 

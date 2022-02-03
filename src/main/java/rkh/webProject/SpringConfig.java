@@ -1,12 +1,12 @@
 package rkh.webProject;
 
-import javax.persistence.EntityManager;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import rkh.webProject.repository.CompanyRepository;
-import rkh.webProject.repository.JpaMemberRepository;
-import rkh.webProject.repository.JpaRancityRepository;
+import rkh.webProject.repository.JdbcTemplateCompanyRepository;
+import rkh.webProject.repository.JdbcTemplateRancityLoginRepository;
 import rkh.webProject.repository.RancityRepository;
 import rkh.webProject.service.CompanyService;
 
@@ -16,12 +16,12 @@ public class SpringConfig {
     /**
      * Jdbc 방식 때 사용
      */
-//    private DataSource dataSource;
-//
-//    @Autowired
-//    public SpringConfig(DataSource dataSource) {
-//        this.dataSource = dataSource;
-//    }
+    private DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
     //endregion
 
     //region Jpa 방식 때 사용
@@ -29,12 +29,12 @@ public class SpringConfig {
      * Jpa 방식 때 사용
      * @return
      */
-    private EntityManager em;
-
-    @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
-    }
+//    private EntityManager em;
+//
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
     //endregion
 
     @Bean //Java 코드로 스프링 빈 등록하기
@@ -45,14 +45,14 @@ public class SpringConfig {
     @Bean //Java 코드로 스프링 빈 등록하기
     public CompanyRepository companyRepository() {
 //        return new MemoryCompanyRepository();
-//        return new JdbcTemplateCompanyRepository(dataSource);
-        return new JpaMemberRepository(em);
+        return new JdbcTemplateCompanyRepository(dataSource);
+//        return new JpaMemberRepository(em);
     }
 
     @Bean
     public RancityRepository rancityRepository() {
 //        return new MemoryRancityLoginRepository();
-//        return new JdbcTemplateRancityLoginRepository(dataSource);
-        return new JpaRancityRepository(em);
+        return new JdbcTemplateRancityLoginRepository(dataSource);
+//        return new JpaRancityRepository(em);
     }
 }
