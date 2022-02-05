@@ -16,7 +16,7 @@ public class SpringConfig {
     /**
      * Jdbc 방식 때 사용
      */
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     @Autowired
     public SpringConfig(DataSource dataSource) {
@@ -27,7 +27,6 @@ public class SpringConfig {
     //region Jpa 방식 때 사용
     /**
      * Jpa 방식 때 사용
-     * @return
      */
 //    private EntityManager em;
 //
@@ -49,6 +48,10 @@ public class SpringConfig {
 //        return new JpaMemberRepository(em);
     }
 
+//    @Bean
+//    public RancityService rancityService() {
+//        return new RancityService(rancityRepository());
+//    }
     @Bean
     public RancityRepository rancityRepository() {
 //        return new MemoryRancityLoginRepository();

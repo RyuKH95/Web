@@ -60,6 +60,8 @@ public class JdbcTemplateCompanyRepository implements CompanyRepository{
             Company company = new Company();
             company.setId(rs.getLong("id"));
             company.setName(rs.getString("name"));
+            company.setSite(rs.getString("site"));
+            company.setAddress(rs.getString("addr"));
             return company;
         };
     }

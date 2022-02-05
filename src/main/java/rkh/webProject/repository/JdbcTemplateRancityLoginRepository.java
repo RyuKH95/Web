@@ -44,6 +44,7 @@ public class JdbcTemplateRancityLoginRepository implements RancityRepository {
         return result.stream().findAny();
     }
 
+
     private RowMapper<RUser> rUserRowMapper() {
         return (rs, rowNum) -> {
             RUser rUser = new RUser();

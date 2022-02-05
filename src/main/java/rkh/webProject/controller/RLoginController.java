@@ -18,22 +18,34 @@ public class RLoginController {
         this.rancityService = rancityService;
     }
 
+    //메인로그인화면
     @GetMapping("happyRancity")
     public String happyRancity() {
         return "happyRancity/login";
     }
+
+    //로그인
+    @PostMapping("happyRancity")
+    public String happyRancityLogin(RLoginForm form) {
+        RUser rUser = new RUser();
+        rUser.setId(form.getId());
+        rUser.setPassword(form.getPassword());
+        if(rancityService.login(rUser)) {
+            return "happyRancity/happyRancity";
+        }
+        else {
+            return "happyRancity/login";
+        }
+    }
+
+    //회원가입
     @GetMapping("happyRancity/signIn")
     public String happyRancitySignIn() {
         return "happyRancity/signIn";
     }
-
-//    @GetMapping("happyRancity/login")
-//    public String happyRancityLogin() {
-//        return "happyRancity/login";
-//    }
-    @PostMapping("happyRancity")
+    //회원가입
+    @PostMapping("happyRancity/signIn")
     public String happyRancityLoginForm(RLoginForm form) {
-        System.out.println("회원가입");
         RUser rUser = new RUser();
         rUser.setId(form.getId());
         rUser.setPassword(form.getPassword());
@@ -43,7 +55,6 @@ public class RLoginController {
         rUser.setDelete_ymd(null);
         rUser.setUse_yn(form.getUse_yn());
         rancityService.join(rUser);
-        System.out.println("회원가입 데이터 "+rUser.getNum()+" "+rUser.getId()+" "+rUser.getPassword()+" "+rUser.getPhone()+" "+rUser.getEmail()+" "+rUser.getCreate_ymd()+" "+rUser.getDelete_ymd()+" "+rUser.getUse_yn());
         return "redirect:/happyRancity";
     }
 }
